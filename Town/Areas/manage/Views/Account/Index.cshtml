@@ -1,0 +1,62 @@
+﻿@model PaginatedList<AppUser>
+@{
+    int counter = (Model.ActivePage - 1) * 2;
+    //int counter =0;
+}
+
+<div class="container-fluid">
+
+    <h1 style="text-align:center">User And Admins</h1>
+
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Id</th>
+                <th scope="col">UserName</th>
+                <th scope="col">Fullname</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (AppUser user in Model)
+            {
+                counter++;
+                <tr>
+                    <th scope="row">@counter</th>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.FullName</td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+<div>
+<form>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+                @if (Model.HasPrevious)
+                {
+                            <li class="page-item">
+                                <a class="page-link" asp-action="index" asp-route-page="@(Model.ActivePage-1)" tabindex="-1">Previous</a>
+                            </li>
+                }
+
+                @for (int i = 1; i <= Model.TotalPageCount; i++)
+                {
+                        <li class="page-item @(Model.ActivePage==i? "active":"" )"><a class="page-link" asp-action="index" asp-route-page="@i">@i</a></li>
+                }
+
+                @if (Model.HasNext)
+                {
+                            <li class="page-item">
+                            <a class="page-link" asp-action="index" asp-route-page="@(Model.ActivePage+1)">Next</a>
+                            </li>
+                }
+        </ul>
+    </nav>
+</form>
+</div>
+

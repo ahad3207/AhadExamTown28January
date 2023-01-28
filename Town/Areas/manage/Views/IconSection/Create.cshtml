@@ -1,0 +1,37 @@
+﻿@model IconSection
+
+
+
+<div class="container-fluid">
+
+    <h1 style="text-align:center">Creating an Icon Section: </h1>
+    <form method="post">
+
+        <div class="row">
+            <div class="col-6">
+                <label asp-for="Title" class="form-label">Enter Title</label>
+                <input asp-for="Title" class="form-control" placeholder="Title">
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+               <div class="col-6">
+                <label asp-for="Icon" class="form-label">Enter icon String</label>
+                <input asp-for="Icon" class="form-control" placeholder="Icon name">
+                <span asp-validation-for="Icon" class="text-danger"></span>
+            </div>
+
+        </div>
+          <div class="row">
+              <div class="col-12">
+                <label asp-for="Desc" class="form-label">Enter Description</label>
+                <textarea asp-for="Desc" class="form-control" placeholder="Title"></textarea>
+                <span asp-validation-for="Desc" class="text-danger"></span>
+            </div>
+        </div>
+        <div style="height:50px"></div>
+        <div style="text-align:center">
+        <button type="submit" class="btn btn-primary" >Create</button>
+        </div>
+    </form>
+
+
+</div>
